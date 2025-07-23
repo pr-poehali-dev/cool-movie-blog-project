@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
@@ -14,6 +15,20 @@ const Reviews = () => {
   const movieReviews = [
     {
       id: 1,
+      title: "Фантастическая четверка: Первые шаги",
+      director: "Мэтт Шекман", 
+      year: 2025,
+      genre: "Фантастика",
+      rating: 4,
+      poster: "https://cdn.poehali.dev/files/41bb1792-8a9c-49b4-abbd-942daa7ce881.jpg",
+      description: "Перезапуск супергеройской команды в ретрофутуристическом стиле 60-х",
+      fullReview: "Смелое решение с ретроатмосферой и акцентом на семейных отношениях. Педро Паскаль убедителен в роли Рида Ричардса.",
+      pros: ["Уникальная ретроатмосфера", "Сильные семейные линии", "Отличные спецэффекты"],
+      cons: ["Неидеальный CGI Существа", "Предсказуемый сюжет"],
+      link: "/reviews/fantastic-four"
+    },
+    {
+      id: 2,
       title: "Дюна: Часть вторая",
       director: "Дени Вильнёв",
       year: 2024,
@@ -219,10 +234,19 @@ const Reviews = () => {
                         </div>
                       </div>
                       
-                      <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                        <Icon name="ExternalLink" size={16} className="mr-2" />
-                        Читать полный обзор
-                      </Button>
+                      {movie.link ? (
+                        <Link to={movie.link}>
+                          <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                            <Icon name="ExternalLink" size={16} className="mr-2" />
+                            Читать полный обзор
+                          </Button>
+                        </Link>
+                      ) : (
+                        <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                          <Icon name="ExternalLink" size={16} className="mr-2" />
+                          Читать полный обзор
+                        </Button>
+                      )}
                     </CardContent>
                   </div>
                 </div>

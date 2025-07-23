@@ -4,6 +4,8 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 import ShareButtons from '@/components/ShareButtons';
+import LikeButton from '@/components/LikeButton';
+import ViewCounter from '@/components/ViewCounter';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
@@ -21,7 +23,8 @@ const Articles = () => {
       image: "img/6a5cbe7c-b185-4fec-ab31-936ef2860c2d.jpg",
       excerpt: "Исследование того, как технологии изменили способы рассказывания историй в кино за последние 130 лет.",
       tags: ["История кино", "Технологии", "Анализ"],
-      views: "8.2K"
+      views: 8200,
+      likes: 45
     },
     {
       id: 2,
@@ -33,7 +36,8 @@ const Articles = () => {
       image: "img/6a5cbe7c-b185-4fec-ab31-936ef2860c2d.jpg",
       excerpt: "Как режиссер использует цветовую палитру для создания атмосферы и передачи эмоций в своих работах.",
       tags: ["Нолан", "Психология", "Визуальный стиль"],
-      views: "12.1K"
+      views: 12100,
+      likes: 78
     },
     {
       id: 3,
@@ -190,10 +194,10 @@ const Articles = () => {
                         <Icon name="Clock" size={14} />
                         <span>{filteredArticles[0].readTime}</span>
                       </div>
-                      <div className="flex items-center space-x-1">
-                        <Icon name="Eye" size={14} />
-                        <span>{filteredArticles[0].views}</span>
-                      </div>
+                      <ViewCounter 
+                        initialViews={filteredArticles[0].views}
+                        itemId={`article-${filteredArticles[0].id}`}
+                      />
                     </div>
                   </div>
                   <Button className="bg-primary hover:bg-primary/90">
@@ -237,10 +241,10 @@ const Articles = () => {
                   </CardTitle>
                   <div className="flex items-center justify-between text-sm text-muted-foreground">
                     <span>{new Date(article.publishDate).toLocaleDateString('ru-RU')}</span>
-                    <div className="flex items-center space-x-1">
-                      <Icon name="Eye" size={14} />
-                      <span>{article.views}</span>
-                    </div>
+                    <ViewCounter 
+                      initialViews={article.views}
+                      itemId={`article-${article.id}`}
+                    />
                   </div>
                 </CardHeader>
                 
@@ -267,6 +271,13 @@ const Articles = () => {
                     </Button>
                     
                     <div className="pt-3 border-t border-border">
+                      <div className="flex items-center justify-between mb-3">
+                        <LikeButton 
+                          initialLikes={article.likes}
+                          articleId={`article-${article.id}`}
+                          className="flex-1 mr-2"
+                        />
+                      </div>
                       <div className="flex items-center justify-between mb-2">
                         <span className="text-sm font-medium">Поделиться:</span>
                       </div>

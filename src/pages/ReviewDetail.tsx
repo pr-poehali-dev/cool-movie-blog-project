@@ -5,11 +5,15 @@ import Icon from '@/components/ui/icon';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ShareButtons from '@/components/ShareButtons';
+import LikeButton from '@/components/LikeButton';
+import { useViewCounter } from '@/hooks/useViewCounter';
 import { Link } from 'react-router-dom';
 
 const ReviewDetail = () => {
   const shareTitle = "Рецензия на фильм «Фантастическая четверка: Первые шаги»";
   const shareText = "Узнайте, как фильм «Фантастическая четверка: Первые шаги» сочетает семейную драму и эпичные сражения с Галактусом.";
+  
+  const { formattedViews, isIncrementing } = useViewCounter(2100, 'fantastic-four-review');
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -58,7 +62,9 @@ const ReviewDetail = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <Icon name="Eye" size={16} />
-                <span>2.1K просмотров</span>
+                <span className={`transition-all duration-300 ${isIncrementing ? 'text-primary scale-105' : ''}`}>
+                  {formattedViews} просмотров
+                </span>
               </div>
             </div>
           </div>
@@ -197,14 +203,29 @@ const ReviewDetail = () => {
               </div>
             </div>
 
-            {/* Share Section */}
+            {/* Like and Share Section */}
             <Card className="mt-12 bg-card border-border">
               <CardContent className="p-8">
-                <h3 className="text-2xl font-bebas tracking-wide mb-6">Поделиться статьей</h3>
-                <ShareButtons 
-                  title={shareTitle}
-                  description={shareText}
-                />
+                <div className="text-center mb-8">
+                  <h3 className="text-2xl font-bebas tracking-wide mb-6">Понравилась статья?</h3>
+                  <LikeButton 
+                    initialLikes={156}
+                    articleId="fantastic-four-review"
+                    variant="large"
+                    className="mb-6"
+                  />
+                  <p className="text-muted-foreground">
+                    Ваша поддержка помогает нам создавать больше качественного контента о кино
+                  </p>
+                </div>
+                
+                <div className="border-t border-border pt-6">
+                  <h4 className="text-xl font-bebas tracking-wide mb-4">Поделиться статьей</h4>
+                  <ShareButtons 
+                    title={shareTitle}
+                    description={shareText}
+                  />
+                </div>
               </CardContent>
             </Card>
 

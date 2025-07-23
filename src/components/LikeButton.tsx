@@ -3,7 +3,7 @@ import Icon from '@/components/ui/icon';
 import { useLikeButton } from '@/hooks/useLikeButton';
 
 interface LikeButtonProps {
-  initialLikes: number;
+  initialLikes?: number;
   articleId?: string;
   variant?: 'default' | 'large';
   className?: string;
@@ -15,7 +15,7 @@ const LikeButton = ({
   variant = 'default',
   className = '' 
 }: LikeButtonProps) => {
-  const { likes, formattedLikes, isLiked, isAnimating, toggleLike } = useLikeButton(initialLikes, articleId);
+  const { likes, formattedLikes, isLiked, isAnimating, toggleLike } = useLikeButton(initialLikes || 0, articleId);
 
   const isLarge = variant === 'large';
 

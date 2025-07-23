@@ -7,7 +7,7 @@ interface ViewCounterState {
 
 export const useViewCounter = (initialViews: number, articleId?: string) => {
   const [state, setState] = useState<ViewCounterState>({
-    views: initialViews,
+    views: initialViews || 0,
     isIncrementing: false
   });
 
@@ -58,12 +58,13 @@ export const useViewCounter = (initialViews: number, articleId?: string) => {
   }, []);
 
   const formatViews = (views: number): string => {
-    if (views >= 1000000) {
-      return `${(views / 1000000).toFixed(1)}M`;
-    } else if (views >= 1000) {
-      return `${(views / 1000).toFixed(1)}K`;
+    const numViews = typeof views === 'number' ? views : 0;
+    if (numViews >= 1000000) {
+      return `${(numViews / 1000000).toFixed(1)}M`;
+    } else if (numViews >= 1000) {
+      return `${(numViews / 1000).toFixed(1)}K`;
     }
-    return views.toString();
+    return numViews.toString();
   };
 
   return {

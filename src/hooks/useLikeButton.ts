@@ -8,7 +8,7 @@ interface LikeButtonState {
 
 export const useLikeButton = (initialLikes: number, articleId?: string) => {
   const [state, setState] = useState<LikeButtonState>({
-    likes: initialLikes,
+    likes: initialLikes || 0,
     isLiked: false,
     isAnimating: false
   });
@@ -68,12 +68,13 @@ export const useLikeButton = (initialLikes: number, articleId?: string) => {
   };
 
   const formatLikes = (likes: number): string => {
-    if (likes >= 1000000) {
-      return `${(likes / 1000000).toFixed(1)}M`;
-    } else if (likes >= 1000) {
-      return `${(likes / 1000).toFixed(1)}K`;
+    const numLikes = typeof likes === 'number' ? likes : 0;
+    if (numLikes >= 1000000) {
+      return `${(numLikes / 1000000).toFixed(1)}M`;
+    } else if (numLikes >= 1000) {
+      return `${(numLikes / 1000).toFixed(1)}K`;
     }
-    return likes.toString();
+    return numLikes.toString();
   };
 
   return {

@@ -69,18 +69,65 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Header */}
-      <header className="border-b border-border bg-card">
+      <header className="relative border-b border-border bg-card/95 backdrop-blur-sm">
         <div className="container mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
-            <h1 className="text-4xl font-bebas tracking-wider text-primary">CINEMA</h1>
-            <nav className="hidden md:flex space-x-8">
-              <a href="#" className="hover:text-primary transition-colors">Главная</a>
-              <a href="#" className="hover:text-primary transition-colors">Обзоры</a>
-              <a href="#" className="hover:text-primary transition-colors">Топы</a>
-              <a href="#" className="hover:text-primary transition-colors">Трейлеры</a>
-              <a href="#" className="hover:text-primary transition-colors">Статьи</a>
-              <a href="#" className="hover:text-primary transition-colors">Контакты</a>
+            <div className="flex items-center space-x-3">
+              <Icon name="Film" size={32} className="text-primary" />
+              <h1 className="text-4xl font-bebas tracking-wider text-primary">CINEMA</h1>
+            </div>
+            <nav className="hidden md:flex items-center space-x-1">
+              <a href="#" className="relative px-4 py-2 font-bebas text-lg tracking-wide text-foreground hover:text-primary transition-all duration-300 group">
+                <span className="relative z-10">ГЛАВНАЯ</span>
+                <div className="absolute inset-0 bg-primary/10 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300 origin-center" />
+                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
+              </a>
+              <a href="#" className="relative px-4 py-2 font-bebas text-lg tracking-wide text-foreground hover:text-primary transition-all duration-300 group">
+                <span className="relative z-10 flex items-center">
+                  <Icon name="Star" size={16} className="mr-2" />
+                  ОБЗОРЫ
+                </span>
+                <div className="absolute inset-0 bg-primary/10 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300 origin-center" />
+                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
+              </a>
+              <a href="#" className="relative px-4 py-2 font-bebas text-lg tracking-wide text-foreground hover:text-primary transition-all duration-300 group">
+                <span className="relative z-10 flex items-center">
+                  <Icon name="Trophy" size={16} className="mr-2" />
+                  ТОПЫ
+                </span>
+                <div className="absolute inset-0 bg-primary/10 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300 origin-center" />
+                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
+              </a>
+              <a href="#" className="relative px-4 py-2 font-bebas text-lg tracking-wide text-foreground hover:text-primary transition-all duration-300 group">
+                <span className="relative z-10 flex items-center">
+                  <Icon name="PlayCircle" size={16} className="mr-2" />
+                  ТРЕЙЛЕРЫ
+                </span>
+                <div className="absolute inset-0 bg-primary/10 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300 origin-center" />
+                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
+              </a>
+              <a href="#" className="relative px-4 py-2 font-bebas text-lg tracking-wide text-foreground hover:text-primary transition-all duration-300 group">
+                <span className="relative z-10 flex items-center">
+                  <Icon name="FileText" size={16} className="mr-2" />
+                  СТАТЬИ
+                </span>
+                <div className="absolute inset-0 bg-primary/10 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300 origin-center" />
+                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
+              </a>
+              <a href="#" className="relative px-4 py-2 font-bebas text-lg tracking-wide text-foreground hover:text-primary transition-all duration-300 group">
+                <span className="relative z-10 flex items-center">
+                  <Icon name="Mail" size={16} className="mr-2" />
+                  КОНТАКТЫ
+                </span>
+                <div className="absolute inset-0 bg-primary/10 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300 origin-center" />
+                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
+              </a>
             </nav>
+            
+            {/* Mobile menu button */}
+            <button className="md:hidden p-2 rounded-lg hover:bg-primary/10 transition-colors">
+              <Icon name="Menu" size={24} className="text-foreground" />
+            </button>
           </div>
         </div>
       </header>

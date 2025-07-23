@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import Icon from '@/components/ui/icon';
+import ShareButtons from '@/components/ShareButtons';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
@@ -234,19 +235,32 @@ const Reviews = () => {
                         </div>
                       </div>
                       
-                      {movie.link ? (
-                        <Link to={movie.link}>
+                      <div className="space-y-4">
+                        {movie.link ? (
+                          <Link to={movie.link}>
+                            <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                              <Icon name="ExternalLink" size={16} className="mr-2" />
+                              Читать полный обзор
+                            </Button>
+                          </Link>
+                        ) : (
                           <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                             <Icon name="ExternalLink" size={16} className="mr-2" />
                             Читать полный обзор
                           </Button>
-                        </Link>
-                      ) : (
-                        <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                          <Icon name="ExternalLink" size={16} className="mr-2" />
-                          Читать полный обзор
-                        </Button>
-                      )}
+                        )}
+                        
+                        <div className="pt-3 border-t border-border">
+                          <div className="flex items-center justify-between mb-2">
+                            <span className="text-sm font-medium">Поделиться:</span>
+                          </div>
+                          <ShareButtons 
+                            title={`Обзор фильма "${movie.title}"`}
+                            description={movie.description}
+                            url={movie.link ? `${window.location.origin}${movie.link}` : undefined}
+                          />
+                        </div>
+                      </div>
                     </CardContent>
                   </div>
                 </div>

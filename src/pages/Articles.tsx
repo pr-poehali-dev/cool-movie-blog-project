@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
+import ShareButtons from '@/components/ShareButtons';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
@@ -259,10 +260,22 @@ const Articles = () => {
                     </div>
                   </div>
                   
-                  <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                    <Icon name="BookOpen" size={16} className="mr-2" />
-                    Читать полностью
-                  </Button>
+                  <div className="space-y-4">
+                    <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                      <Icon name="BookOpen" size={16} className="mr-2" />
+                      Читать полностью
+                    </Button>
+                    
+                    <div className="pt-3 border-t border-border">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-sm font-medium">Поделиться:</span>
+                      </div>
+                      <ShareButtons 
+                        title={article.title}
+                        description={article.excerpt}
+                      />
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
             ))}

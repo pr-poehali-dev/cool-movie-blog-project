@@ -4,9 +4,13 @@ import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import ShareButtons from '@/components/ShareButtons';
 import { Link } from 'react-router-dom';
 
 const ReviewDetail = () => {
+  const shareTitle = "Рецензия на фильм «Фантастическая четверка: Первые шаги»";
+  const shareText = "Узнайте, как фильм «Фантастическая четверка: Первые шаги» сочетает семейную драму и эпичные сражения с Галактусом.";
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Header />
@@ -197,20 +201,10 @@ const ReviewDetail = () => {
             <Card className="mt-12 bg-card border-border">
               <CardContent className="p-8">
                 <h3 className="text-2xl font-bebas tracking-wide mb-6">Поделиться статьей</h3>
-                <div className="flex items-center space-x-4">
-                  <Button variant="outline" className="flex items-center space-x-2">
-                    <Icon name="Share" size={16} />
-                    <span>Копировать ссылку</span>
-                  </Button>
-                  <Button variant="outline" className="flex items-center space-x-2">
-                    <Icon name="MessageCircle" size={16} />
-                    <span>Telegram</span>
-                  </Button>
-                  <Button variant="outline" className="flex items-center space-x-2">
-                    <Icon name="Share2" size={16} />
-                    <span>VK</span>
-                  </Button>
-                </div>
+                <ShareButtons 
+                  title={shareTitle}
+                  description={shareText}
+                />
               </CardContent>
             </Card>
 

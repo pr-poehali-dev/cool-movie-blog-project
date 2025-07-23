@@ -159,14 +159,9 @@ const Index = () => {
               НА ПОВТОРЕ
             </h1>
           </div>
-          <h2 className="text-2xl md:text-3xl font-bebas mb-6 tracking-wider text-primary drop-shadow-lg">
+          <h2 className="text-2xl md:text-3xl font-bebas mb-12 tracking-wider text-primary drop-shadow-lg">
             🎬 БЛОГ О КИНО, КОТОРОЕ ХОЧЕТСЯ ПЕРЕСМАТРИВАТЬ
           </h2>
-          <p className="text-lg md:text-xl text-white/90 mb-12 max-w-4xl mx-auto leading-relaxed drop-shadow-lg">
-            Место для тех, кто любит кино не по рейтингу, а по отклику внутри. 
-            Мы говорим о фильмах, которые оставляют след — будь то забытые триллеры 90-х, 
-            фестивальные драмы или просто те ленты, к которым хочется вернуться.
-          </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8 py-4 shadow-2xl hover:shadow-primary/25 transition-all duration-300 transform hover:scale-105">
               <Icon name="Play" size={24} className="mr-3" />
